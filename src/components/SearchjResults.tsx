@@ -3,25 +3,22 @@ import { ProductItem } from './ProductItem';
 
 type Product = {
     id: number;
-    price: number;
     title: string;
+    price: number;
+    priceFormatted: string;
 };
 
 interface SearchResultsProps {
     results: Array<Product>;
+    totalPrice: number;
     onAddToWishlist: (id: number) => void;
 }
 
 export function SearchResults({
     results,
+    totalPrice,
     onAddToWishlist,
 }: SearchResultsProps) {
-    const totalPrice = useMemo(() => {
-        return results.reduce((total, product) => {
-            return total + product.price;
-        }, 0);
-    }, [results]);
-
     return (
         <>
             <h2>{totalPrice}</h2>

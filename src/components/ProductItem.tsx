@@ -2,8 +2,9 @@ import { memo } from 'react';
 
 type Product = {
     id: number;
-    price: number;
     title: string;
+    price: number;
+    priceFormatted: string;
 };
 
 interface ProductItemProps {
@@ -14,7 +15,7 @@ interface ProductItemProps {
 function ProductItemComponent({ product, onAddToWishlist }: ProductItemProps) {
     return (
         <div>
-            {product.title} - <strong>{product.price}</strong>
+            {product.title} - <strong>{product.priceFormatted}</strong>
             <button onClick={() => onAddToWishlist(product.id)}>
                 Add to Wish List
             </button>
